@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddNew">
+
+
+    <!--Edit text to enter course name-->
+    <TextView
+        android:id="@+id/an_Edit_Header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:text="@string/add_new_item"
+        android:textAlignment="center" />
+
+    <EditText
+        android:id="@+id/an_Edit_ItemName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="@string/enter_item_name" />
+
+    <!--edit text to enter course duration-->
+    <EditText
+        android:id="@+id/an_Edit_ItemDateTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="@string/enter_date_and_time" />
+
+    <!--edit text to display course tracks-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/an_Chbx_idItemType1chbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:layout_weight="1"
+            android:text="@string/income" />
+
+        <CheckBox
+            android:id="@+id/an_Chbx_ItemType2chbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:layout_weight="1"
+            android:text="@string/expenditure" />
+
+    </LinearLayout>
+
+    <!--edit text for course description-->
+    <EditText
+        android:id="@+id/an_Edit_ItemDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="@string/enter_description" />
+
+    <!--button for adding new course-->
+    <Button
+        android:id="@+id/an_btn_addNew"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/add_new"
+        android:textAllCaps="false" />
+
+
+</LinearLayout>

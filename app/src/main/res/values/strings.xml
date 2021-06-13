@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">KirimChiqim</string>
+    <string name="hello">Assalomu alaykum!</string>
+    <string name="add_new">Add New</string>
+    <string name="show_all">Show All</string>
+    <string name="enter_item_name">Enter Item Name</string>
+    <string name="enter_date_and_time">Enter Date (Ex: 2021.01.01) </string>
+    <string name="income">Income</string>
+    <string name="expenditure">Expenditure</string>
+    <string name="add_new_item">Add New Item</string>
+    <string name="enter_description">Enter Description</string>
+    <string name="check">Check</string>
+    <string name="linkedin" translatable="false">LinkedIn.com/in/jsr1611<a href="https://www.linkedin.com/in/jsr1611/"></a>
+</string>
+
+    <string name="github" translatable="false">GitHub.com/jsr1611<a href="https://github.com/jsr1611"></a>
+</string>
+    <string name="photo">Photo</string>
+    <string name="name">Name</string>
+    <string name="phone_number">Phone number</string>
+    <string name="company">Company</string>
+
+
+</resources>

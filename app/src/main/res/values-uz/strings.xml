@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">KirimChiqim</string>
+    <string name="hello">Assalomu alaykum!</string>
+    <string name="add_new">Yangi Qo`shish</string>
+    <string name="show_all">Barchasini Ko`rish</string>
+    <string name="enter_item_name">Nomini kiriting</string>
+    <string name="enter_date_and_time">Kun va vaqtini kiriting</string>
+    <string name="income">Kirim</string>
+    <string name="expenditure">Chiqim</string>
+    <string name="add_new_item">Yangi narsa qo`shish</string>
+    <string name="enter_description">Batafsil ma`lumot kiritish</string>
+    <string name="check">Tekshirish</string>
+    <string name="photo">Rasm</string>
+    <string name="name">Ismi</string>
+    <string name="phone_number">Tel raqami</string>
+    <string name="company">Firma nomi</string>
+</resources>
