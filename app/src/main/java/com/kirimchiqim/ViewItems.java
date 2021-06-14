@@ -50,9 +50,9 @@ public class ViewItems extends AppCompatActivity {
 
                     String itemTypeRes = "";
                     if (checkBox1.isChecked()) {
-                        itemTypeRes = "'kirim'";
+                        itemTypeRes = String.format("'%s'", getString(R.string.income));
                     } else if (checkBox2.isChecked()) {
-                        itemTypeRes = "'chiqim'";
+                        itemTypeRes = String.format("'%s'", getString(R.string.expenditure));
                     } /*else {
                     checkBox1.setSelected(true);
                     itemTypeRes = "kirim";

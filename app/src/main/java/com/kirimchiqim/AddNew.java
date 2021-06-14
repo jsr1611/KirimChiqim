@@ -60,16 +60,16 @@ public class AddNew extends AppCompatActivity {
                 }
 
                 if (itemType1.isChecked())
-                    itemType = "kirim";
+                    itemType = getString(R.string.income);
                 if (itemType2.isChecked())
-                    itemType = "chiqim";
+                    itemType = getString(R.string.expenditure);
 
                 // on below line we are calling a method to add new
                 // course to sqlite data and pass all our values to it.
                 dbHandler.addNewItem(itemName, itemDateTime, itemDescription, itemType);
 
                 // after adding the data we are displaying a toast message.
-                Toast.makeText(AddNew.this, "Course has been added.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddNew.this, "Item has been added successfully.", Toast.LENGTH_SHORT).show();
                 itemNameEdt.setText("");
                 itemTimeEdt.setText("");
                 itemType2.setSelected(false);
