@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Ҳуш келибсиз!</string>
+    <string name="add_new">Янги Қўшиш</string>
+    <string name="show_all">Барчасини Кўриш</string>
+    <string name="enter_item_name">Номини киритинг</string>
+    <string name="enter_date_and_time">Сана ва вақтни киритинг</string>
+    <string name="income">Кирим</string>
+    <string name="expenditure">Чиқим</string>
+    <string name="add_new_item">Янги нарса қўшиш</string>
+    <string name="enter_description">Батафсил маълумот киритиш</string>
+    <string name="check">Текшириш</string>
+    <string name="photo">Расм</string>
+    <string name="name">Исми</string>
+    <string name="phone_number">Тел рақами</string>
+    <string name="company">Фирма номи</string>
+    <string name="about_me">Дастурчи ҳақида</string>
+    <string name="enter_amount">Нархини киритинг</string>
+    <string name="alert_enter_all_values">Илтимос, барча қаторларни тўлдиринг...</string>
+    <string name="alert_check_only_one_box">Илтимос, фақат битта катакчани танланг</string>
+    <string name="alert_item_added_successfully">Маълумот муваффақиятли сақланди.</string>
+    <string name="totalCount">Жами(дона)</string>
+    <string name="totalAmount">Жами</string>
+    <string name="no_data_found">Маълумот мажуд эмас.</string>
+    <string name="amount">Қиймати</string>
+</resources>

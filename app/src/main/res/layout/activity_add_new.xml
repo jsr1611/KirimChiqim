@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,6 +9,7 @@
 
 
     <!--Edit text to enter course name-->
+
     <TextView
         android:id="@+id/an_Edit_Header"
         android:layout_width="match_parent"
@@ -40,7 +42,7 @@
         android:orientation="horizontal">
 
         <CheckBox
-            android:id="@+id/an_Chbx_idItemType1chbox"
+            android:id="@+id/an_Chbx_idItemType1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
@@ -48,7 +50,7 @@
             android:text="@string/income" />
 
         <CheckBox
-            android:id="@+id/an_Chbx_ItemType2chbox"
+            android:id="@+id/an_Chbx_ItemType2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
@@ -58,6 +60,14 @@
     </LinearLayout>
 
     <!--edit text for course description-->
+    <EditText
+        android:id="@+id/an_Edit_ItemAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:inputType="numberDecimal"
+        android:hint="@string/enter_amount" />
+
     <EditText
         android:id="@+id/an_Edit_ItemDescription"
         android:layout_width="match_parent"

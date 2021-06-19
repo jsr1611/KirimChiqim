@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">KirimChiqim</string>
-    <string name="hello">Assalomu alaykum!</string>
+    <string name="app_name" translatable="false">KirimChiqim</string>
+    <string name="hello">Welcome!</string>
     <string name="add_new">Add New</string>
     <string name="show_all">Show All</string>
     <string name="enter_item_name">Enter Item Name</string>
@@ -19,6 +19,17 @@
     <string name="name">Name</string>
     <string name="phone_number">Phone number</string>
     <string name="company">Company</string>
+    <string name="about_me">Info</string>
+    <string name="enter_amount">Enter Amount</string>
+    <string name="alert_enter_all_values">Please enter all the data...</string>
+    <string name="alert_check_only_one_box">Please,  check only one box...</string>
+    <string name="alert_item_added_successfully">Item has been added successfully.</string>
+    <string name="totalCount">Total (pcs)</string>
+    <string name="totalAmount">Total Amount</string>
+    <string name="no_data_found">No data found.</string>
+    <string name="amount">Amount</string>
+    <string name="TYPE_Income" translatable="false">Income</string>
+    <string name="TYPE_Expenditure" translatable="false">Expenditure</string>
 
 
 </resources>

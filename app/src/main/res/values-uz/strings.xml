@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">KirimChiqim</string>
-    <string name="hello">Assalomu alaykum!</string>
+    <string name="hello">Hush kelibsiz!</string>
     <string name="add_new">Yangi Qo`shish</string>
     <string name="show_all">Barchasini Ko`rish</string>
     <string name="enter_item_name">Nomini kiriting</string>
-    <string name="enter_date_and_time">Kun va vaqtini kiriting</string>
+    <string name="enter_date_and_time">Sana va vaqtini kiriting</string>
     <string name="income">Kirim</string>
     <string name="expenditure">Chiqim</string>
     <string name="add_new_item">Yangi narsa qo`shish</string>
@@ -15,4 +14,13 @@
     <string name="name">Ismi</string>
     <string name="phone_number">Tel raqami</string>
     <string name="company">Firma nomi</string>
+    <string name="about_me">Dasturchi haqida</string>
+    <string name="enter_amount">Narxini kiriting</string>
+    <string name="alert_enter_all_values">Iltimos, barcha qatorlarni to`ldiring...</string>
+    <string name="alert_check_only_one_box">Iltimos, faqat bitta katakchani tanlan</string>
+    <string name="alert_item_added_successfully">Ma`lumot muvaffaqiyatli saqlandi.</string>
+    <string name="totalCount">Jami (dona)</string>
+    <string name="totalAmount">Jami</string>
+    <string name="no_data_found">Ma`lumot mavjud emas.</string>
+    <string name="amount">Qiymati</string>
 </resources>

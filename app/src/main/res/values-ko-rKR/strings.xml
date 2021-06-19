@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">KirimChiqim</string>
+    <string name="hello">환영합니다!</string>
+    <string name="add_new">추가</string>
+    <string name="show_all">모두 보기</string>
+    <string name="enter_item_name">아이템명 입력</string>
+    <string name="enter_date_and_time">날짜 입력</string>
+    <string name="income">입금</string>
+    <string name="expenditure">출금</string>
+    <string name="add_new_item">새로운 아이템 추가</string>
+    <string name="enter_description">상세 정보 입력</string>
+    <string name="check">확인</string>
+    <string name="photo">사진</string>
+    <string name="name">이름</string>
+    <string name="phone_number">휴대폰</string>
+    <string name="company">회사</string>
+    <string name="about_me">개발자 정보</string>
+    <string name="enter_amount">금액 입력</string>
+    <string name="alert_enter_all_values">필수 정보 모두 입력해 주세요...</string>
+    <string name="alert_check_only_one_box">박스 하나만 체크해 주세요...</string>
+    <string name="alert_item_added_successfully">아이템 추가에 성공했습니다.</string>
+    <string name="totalCount">총(개)</string>
+    <string name="totalAmount">총 금액</string>
+    <string name="no_data_found">조회된 데이터 없음.</string>
+    <string name="amount">금액</string>
+</resources>

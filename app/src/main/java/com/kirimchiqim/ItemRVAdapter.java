@@ -1,6 +1,7 @@
 package com.kirimchiqim;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,8 +41,14 @@ public class ItemRVAdapter extends RecyclerView.Adapter<ItemRVAdapter.ViewHolder
         ItemModal modal = itemModalArrayList.get(position);
         holder.itemNameTV.setText(modal.getItemName());
         holder.itemDescTV.setText(modal.getItemDescription());
+        holder.itemAmountTV.setText(String.valueOf(modal.getItemAmount()));
         holder.itemDateTimeTV.setText(modal.getDateAndTime());
-        holder.itemTypeTV.setText(modal.getItemType());
+        System.out.println("DEBUGGGGGGGGGGGGGGGGG income: " +  context.getResources().getString(R.string.income));
+        System.out.println("DEBUGGGGGGGGGGGGGGGGG expenditure: " + context.getResources().getString(R.string.expenditure));
+
+        String itemTypeStr = modal.getItemType().equals("Income") ? context.getResources().getString(R.string.income) : context.getResources().getString(R.string.expenditure);
+
+        holder.itemTypeTV.setText(String.valueOf(itemTypeStr));
     }
 
     @Override
@@ -53,7 +60,7 @@ public class ItemRVAdapter extends RecyclerView.Adapter<ItemRVAdapter.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         // creating variables for our text views.
-        private TextView itemNameTV, itemDescTV, itemDateTimeTV, itemTypeTV;
+        private TextView itemNameTV, itemDescTV, itemAmountTV, itemDateTimeTV, itemTypeTV;
         private CheckBox itemType1TV, itemType2TV;
 
         public ViewHolder(@NonNull View itemView) {
@@ -61,6 +68,7 @@ public class ItemRVAdapter extends RecyclerView.Adapter<ItemRVAdapter.ViewHolder
             // initializing our text views
             itemNameTV = itemView.findViewById(R.id.idTVItemName);
             itemDescTV = itemView.findViewById(R.id.idTVItemDescription);
+            itemAmountTV = itemView.findViewById(R.id.idTVItemAmount);
             itemDateTimeTV = itemView.findViewById(R.id.idTVDateTime);
             itemTypeTV = itemView.findViewById(R.id.idTVItemType);
         }

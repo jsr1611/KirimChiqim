@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -15,7 +16,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String DB_NAME = "kirmchiqimdb";
 
     // below int is our database version
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 2;
 
     // below variable is for our table name.
     private static final String TABLE_NAME = "mybudget";
@@ -23,16 +24,19 @@ public class DBHandler extends SQLiteOpenHelper {
     // below variable is for our id column.
     private static final String ID_COL = "id";
 
-    // below variable is for our course name column
+    // below variable is for our item name column
     private static final String NAME_COL = "name";
 
-    // below variable id for our course duration column.
+    // below variable id for our item time column.
     private static final String TIME_COL = "dateandtime";
 
-    // below variable for our course description column.
+    // below variable id for our item amount column.
+    private static final String AMOUNT_COL = "amount";
+
+    // below variable for our item description column.
     private static final String DESCRIPTION_COL = "description";
 
-    // below variable is for our course tracks column.
+    // below variable is for our item type column.
     private static final String TYPE_COL = "type";
 
     // creating a constructor for our database handler.
@@ -50,17 +54,19 @@ public class DBHandler extends SQLiteOpenHelper {
         String query = "CREATE TABLE " + TABLE_NAME + " ("
                 + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + NAME_COL + " TEXT,"
+                + TYPE_COL + " TEXT,"
+                + AMOUNT_COL + " TEXT,"
                 + TIME_COL + " TEXT,"
-                + DESCRIPTION_COL + " TEXT,"
-                + TYPE_COL + " TEXT)";
+                + DESCRIPTION_COL + " TEXT)";
 
         // at last we are calling a exec sql
         // method to execute above sql query
         db.execSQL(query);
     }
 
+
     // this method is use to add new course to our sqlite database.
-    public void addNewItem(String itemName, String itemDateTime, String itemDescription, String itemType) {
+    public void addNewItem(String itemName, String itemType, String itemAmount, String itemDateTime, String itemDescription) {
 
         // on below line we are creating a variable for
         // our sqlite database and calling writable method
@@ -74,9 +80,11 @@ public class DBHandler extends SQLiteOpenHelper {
         // on below line we are passing all values
         // along with its key and value pair.
         values.put(NAME_COL, itemName);
+        values.put(TYPE_COL, itemType);
+        values.put(AMOUNT_COL, itemAmount);
         values.put(TIME_COL, itemDateTime);
         values.put(DESCRIPTION_COL, itemDescription);
-        values.put(TYPE_COL, itemType);
+
 
         // after adding all values we are passing
         // content values to our table.
@@ -85,6 +93,23 @@ public class DBHandler extends SQLiteOpenHelper {
         // at last we are closing our
         // database after adding database.
         db.close();
+    }
+
+    public int readTotalCount(String itemType) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        int res = 0;
+        String sqlSelect = "SELECT COUNT(*) FROM " + TABLE_NAME + " WHERE " + TYPE_COL + " = " + itemType;
+       System.out.println("total count SSSSSSSSSSSSSSSSSQL total:" + sqlSelect);
+        Cursor cursor = db.rawQuery(sqlSelect, null);
+        if (cursor.moveToFirst()) {
+            do {
+                res = cursor.getInt(0);
+                System.out.printf("\n\ntotalcount RESSSSSSSSSSSSSSSSSSS: " + res + "\n\n");
+                break;
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return res;
     }
 
     // we have created a new method for reading all the courses.
@@ -112,9 +137,10 @@ public class DBHandler extends SQLiteOpenHelper {
             do {
                 // on below line we are adding the data from cursor to our array list.
                 itemModalArrayList.add(new ItemModal(cursorItems.getString(1),
-                        cursorItems.getString(4),
                         cursorItems.getString(2),
-                        cursorItems.getString(3)));
+                        Integer.parseInt(cursorItems.getString(3)),
+                        cursorItems.getString(4),
+                        cursorItems.getString(5)));
             } while (cursorItems.moveToNext());
             // moving our cursor to next.
         }
@@ -129,5 +155,22 @@ public class DBHandler extends SQLiteOpenHelper {
         // this method is called to check if the table exists already.
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
+    }
+
+    public int readSum(String itemType) {
+        Integer res = 0;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sqlSelect = "SELECT SUM(" + AMOUNT_COL + ") AS amount FROM " + TABLE_NAME + " WHERE " + TYPE_COL + " = " + itemType;
+        System.out.println("ssssssssssssssssssql: " + sqlSelect);
+        Cursor cursor = db.rawQuery(sqlSelect, null);
+        if (cursor.moveToFirst()) {
+            do {
+                res = cursor.getInt(0);
+                break;
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        System.out.println(" sum ressssssssssssssssssssssss: " + res);
+        return res;
     }
 }

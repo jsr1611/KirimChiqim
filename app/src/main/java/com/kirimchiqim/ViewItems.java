@@ -23,36 +23,37 @@ public class ViewItems extends AppCompatActivity {
     private ItemRVAdapter itemRVAdapter;
     private RecyclerView itemsRV;
     private CheckBox checkBox1, checkBox2;
-    private EditText dateandtime;
+    private EditText date_time;
+    private TextView totalCount, Sum;
     private Button btn_Check;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_items);
-        checkBox1 = findViewById(R.id.an_Chbx_idItemType1chbox);
-        checkBox2 = findViewById(R.id.an_Chbx_ItemType2chbox);
-        dateandtime = findViewById(R.id.an_Edit_ItemDateTime);
+        checkBox1 = findViewById(R.id.an_Chbx_idItemType1);
+        checkBox2 = findViewById(R.id.an_Chbx_ItemType2);
+        date_time = findViewById(R.id.an_Edit_ItemDateTime);
         btn_Check = findViewById(R.id.btn_check);
+        totalCount = findViewById(R.id.txt_total_count);
+        Sum = findViewById(R.id.txt_total_amount);
 
         btn_Check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String itemDateTime = dateandtime.getText().toString();
+                String itemDateTime = date_time.getText().toString();
 
                 // validating if the text fields are empty or not.
                 if ((!checkBox1.isChecked() && !checkBox2.isChecked()) || (checkBox1.isChecked() && checkBox2.isChecked())) {
-                    Toast.makeText(ViewItems.this, "Please, check only one box...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ViewItems.this, R.string.alert_check_only_one_box, Toast.LENGTH_SHORT).show();
                     return;
                 } else {
-
-
                     String itemTypeRes = "";
                     if (checkBox1.isChecked()) {
-                        itemTypeRes = String.format("'%s'", getString(R.string.income));
+                        itemTypeRes = String.format("'%s'", getString(R.string.TYPE_Income));
                     } else if (checkBox2.isChecked()) {
-                        itemTypeRes = String.format("'%s'", getString(R.string.expenditure));
+                        itemTypeRes = String.format("'%s'", getString(R.string.TYPE_Expenditure));
                     } /*else {
                     checkBox1.setSelected(true);
                     itemTypeRes = "kirim";
@@ -67,7 +68,7 @@ public class ViewItems extends AppCompatActivity {
                     // list from db handler class.
                     itemModalArrayList = dbHandler.readItems(itemTypeRes, new String[]{itemDateTime});
                     if (itemModalArrayList.size() == 0) {
-                        Toast.makeText(ViewItems.this, "No data found.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ViewItems.this, R.string.no_data_found, Toast.LENGTH_SHORT).show();
                         return;
                     } else {
                         // on below line passing our array lost to our adapter class.
@@ -81,6 +82,18 @@ public class ViewItems extends AppCompatActivity {
                         // setting our adapter to recycler view.
                         itemsRV.setAdapter(itemRVAdapter);
                     }
+
+
+                    // getting total count
+                    int totalCount = dbHandler.readTotalCount(itemTypeRes);
+                    System.out.println("TotalCounttttttttttttttttttttttttttt: " + totalCount);
+                    ViewItems.this.totalCount.setText(String.valueOf(totalCount));
+
+                    // getting total sum
+                    int totalSum = dbHandler.readSum(itemTypeRes);
+                    System.out.println("TotalSummmmmmmmmmmmmmmmmmmmmmmmmmmm: " + totalSum);
+                    Sum.setText(String.valueOf(totalSum));
+
 
                 }
             }

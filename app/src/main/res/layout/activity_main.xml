@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -19,6 +20,7 @@
 
 
     <LinearLayout
+        android:id="@+id/linearlayoutBtns"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -64,10 +66,11 @@
         android:id="@+id/btn_goto_aboutme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="About me"
-        android:layout_below="@id/imageView"
+        android:text="@string/about_me"
+        android:layout_above="@id/linearlayoutBtns"
         android:backgroundTint="@color/teal_200"
         android:layout_centerHorizontal="true"
+
 
         />
 </RelativeLayout>

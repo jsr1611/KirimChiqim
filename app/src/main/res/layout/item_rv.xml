@@ -1,4 +1,5 @@
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -49,6 +50,16 @@
                 android:textColor="@color/black" />
 
         </LinearLayout>
+
+        <!--text view for our course description-->
+        <TextView
+            android:id="@+id/idTVItemAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="3dp"
+            android:text="@string/amount"
+            android:textColor="@color/black" />
 
         <!--text view for our course description-->
         <TextView
