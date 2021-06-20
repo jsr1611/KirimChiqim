@@ -4,14 +4,13 @@
     <string name="add_new">Yangi Qo`shish</string>
     <string name="show_all">Barchasini Ko`rish</string>
     <string name="enter_item_name">Nomini kiriting</string>
-    <string name="enter_date_and_time">Sana va vaqtini kiriting</string>
+    <string name="enter_date_and_time">Sanani tanlang</string>
     <string name="income">Kirim</string>
     <string name="expenditure">Chiqim</string>
     <string name="add_new_item">Yangi narsa qo`shish</string>
     <string name="enter_description">Batafsil ma`lumot kiritish</string>
     <string name="check">Tekshirish</string>
     <string name="photo">Rasm</string>
-    <string name="name">Ismi</string>
     <string name="phone_number">Tel raqami</string>
     <string name="company">Firma nomi</string>
     <string name="about_me">Dasturchi haqida</string>
@@ -23,4 +22,19 @@
     <string name="totalAmount">Jami</string>
     <string name="no_data_found">Ma`lumot mavjud emas.</string>
     <string name="amount">Qiymati</string>
+    <string name="name">Dasturchi</string>
+    <string name="address">Manzil</string>
+    <string name="cheongju_city_s_korea">Janubiy Koreya, Chongju shahri</string>
+    <string name="JAN">Yanvar</string>
+    <string name="FEB">Fevral</string>
+    <string name="MAR">Mart</string>
+    <string name="APR">Aprel</string>
+    <string name="MAY">May</string>
+    <string name="JUN">Iyun</string>
+    <string name="JUL">Iyul</string>
+    <string name="AUG">Avgust</string>
+    <string name="SEP">Sentabr</string>
+    <string name="OCT">Oktabr</string>
+    <string name="NOV">Noyabr</string>
+    <string name="DEC">Dekabr</string>
 </resources>

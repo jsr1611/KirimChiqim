@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">KirimChiqim</string>
     <string name="hello">환영합니다!</string>
     <string name="add_new">추가</string>
     <string name="show_all">모두 보기</string>
     <string name="enter_item_name">아이템명 입력</string>
-    <string name="enter_date_and_time">날짜 입력</string>
+    <string name="enter_date_and_time">날짜 선택</string>
     <string name="income">입금</string>
     <string name="expenditure">출금</string>
     <string name="add_new_item">새로운 아이템 추가</string>
     <string name="enter_description">상세 정보 입력</string>
     <string name="check">확인</string>
     <string name="photo">사진</string>
-    <string name="name">이름</string>
+    <string name="name">개발자</string>
     <string name="phone_number">휴대폰</string>
     <string name="company">회사</string>
     <string name="about_me">개발자 정보</string>
@@ -24,4 +23,18 @@
     <string name="totalAmount">총 금액</string>
     <string name="no_data_found">조회된 데이터 없음.</string>
     <string name="amount">금액</string>
+    <string name="address">주소</string>
+    <string name="cheongju_city_s_korea">충청북도 청주시</string>
+    <string name="JAN">01</string>
+    <string name="FEB">02</string>
+    <string name="MAR">03</string>
+    <string name="APR">04</string>
+    <string name="MAY">05</string>
+    <string name="JUN">06</string>
+    <string name="JUL">07</string>
+    <string name="AUG">08</string>
+    <string name="SEP">09</string>
+    <string name="OCT">10</string>
+    <string name="NOV">11</string>
+    <string name="DEC">12</string>
 </resources>

@@ -4,14 +4,13 @@
     <string name="add_new">Янги Қўшиш</string>
     <string name="show_all">Барчасини Кўриш</string>
     <string name="enter_item_name">Номини киритинг</string>
-    <string name="enter_date_and_time">Сана ва вақтни киритинг</string>
+    <string name="enter_date_and_time">"Санани танланг "</string>
     <string name="income">Кирим</string>
     <string name="expenditure">Чиқим</string>
     <string name="add_new_item">Янги нарса қўшиш</string>
     <string name="enter_description">Батафсил маълумот киритиш</string>
     <string name="check">Текшириш</string>
     <string name="photo">Расм</string>
-    <string name="name">Исми</string>
     <string name="phone_number">Тел рақами</string>
     <string name="company">Фирма номи</string>
     <string name="about_me">Дастурчи ҳақида</string>
@@ -23,4 +22,19 @@
     <string name="totalAmount">Жами</string>
     <string name="no_data_found">Маълумот мажуд эмас.</string>
     <string name="amount">Қиймати</string>
+    <string name="name">Дастурчи</string>
+    <string name="cheongju_city_s_korea">Жанубий Корея, Чонгжу шаҳри</string>
+    <string name="address">Манзил</string>
+    <string name="JAN">Январ</string>
+    <string name="FEB">Феврал</string>
+    <string name="MAR">Март</string>
+    <string name="APR">Апрел</string>
+    <string name="MAY">Май</string>
+    <string name="JUN">Июн</string>
+    <string name="JUL">Июл</string>
+    <string name="AUG">Август</string>
+    <string name="SEP">Сентябр</string>
+    <string name="OCT">Октабр</string>
+    <string name="NOV">Ноябр</string>
+    <string name="DEC">Декабр</string>
 </resources>

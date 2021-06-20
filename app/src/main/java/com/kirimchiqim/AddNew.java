@@ -2,6 +2,8 @@ package com.kirimchiqim;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -10,14 +12,26 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.Calendar;
+
 public class AddNew extends AppCompatActivity {
     // creating variables for our edittext, button and dbhandler
     //private EditText itemNameEdt, itemTypeEdt, itemTimeEdt, itemDescriptionEdt;
-    private EditText itemNameEdt, itemTimeEdt, itemAmountEdt, itemDescriptionEdt;
+    private EditText itemNameEdt, itemAmountEdt, itemDescriptionEdt;
     private CheckBox itemType1, itemType2;
-    private Button addNewItem;
+    private Button addNewItem, dateButton_itemDateSelect;
     private DBHandler dbHandler;
+    private DatePicker mydatePicker;
 
+    public String getDateStamp() {
+        return dateStamp;
+    }
+
+    public void setDateStamp(String dateStamp) {
+        this.dateStamp = dateStamp;
+    }
+
+    private String dateStamp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,17 +41,22 @@ public class AddNew extends AppCompatActivity {
 
         dbHandler = new DBHandler(AddNew.this);
 
+
         // initializing all our variables.
         itemNameEdt = findViewById(R.id.an_Edit_ItemName);
         itemType1 = findViewById(R.id.an_Chbx_idItemType1);
         itemType2 = findViewById(R.id.an_Chbx_ItemType2);
-        itemTimeEdt = findViewById(R.id.an_Edit_ItemDateTime);
+        dateButton_itemDateSelect = findViewById(R.id.an_SelectItemDate);
         itemDescriptionEdt = findViewById(R.id.an_Edit_ItemDescription);
         itemAmountEdt = findViewById(R.id.an_Edit_ItemAmount);
+
+        mydatePicker = new DatePicker(AddNew.this, dateButton_itemDateSelect);
 
         // creating a new dbhandler class
         // and passing our context to it.
         dbHandler = new DBHandler(AddNew.this);
+
+
 
         // below line is to add on click listener for our add course button.
         addNewItem.setOnClickListener(new View.OnClickListener() {
@@ -48,12 +67,13 @@ public class AddNew extends AppCompatActivity {
 
                 String itemType = "";
                 String itemName = itemNameEdt.getText().toString();
-                String itemDateTime = itemTimeEdt.getText().toString();
+                String itemDateTime = mydatePicker.getDateStamp();
 
                 String itemDescription = itemDescriptionEdt.getText().toString();
 
                 // validating if the text fields are empty or not.
-                if (itemName.isEmpty() && itemDateTime.isEmpty() && !TextUtils.isEmpty(itemAmountEdt.getText())) {
+                if (itemName.isEmpty() || itemDateTime.isEmpty() || TextUtils.isEmpty(itemAmountEdt.getText())) {
+                    //System.out.println("\n\n\n\nitemName.isEmpty():" + itemName.isEmpty() + " itemDateTime.isEmpty():" + itemDateTime.isEmpty() + "  !TextUtils.isEmpty(itemAmountEdt.getText()):" +TextUtils.isEmpty(itemAmountEdt.getText() ));
                     Toast.makeText(AddNew.this, R.string.alert_enter_all_values, Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -75,11 +95,21 @@ public class AddNew extends AppCompatActivity {
                 // after adding the data we are displaying a toast message.
                 Toast.makeText(AddNew.this, R.string.alert_item_added_successfully, Toast.LENGTH_SHORT).show();
                 itemNameEdt.setText("");
-                itemTimeEdt.setText("");
+                dateButton_itemDateSelect.setText("");
                 itemType2.setSelected(false);
                 itemType1.setSelected(false);
                 itemAmountEdt.setText("");
                 itemDescriptionEdt.setText("");
+            }
+        });
+
+        dateButton_itemDateSelect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mydatePicker.openDatePicker(v);
+            //setDateStamp(mydatePicker.getDateStamp());
+                //System.out.println("TTTTTTTTTTTTTTTTTTime selected: " + getDateStamp());
+                //dateButton_itemDateSelect.setText(mydatePicker.getBtnText());
             }
         });
 

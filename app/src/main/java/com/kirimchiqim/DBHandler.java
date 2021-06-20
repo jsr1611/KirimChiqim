@@ -16,7 +16,7 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String DB_NAME = "kirmchiqimdb";
 
     // below int is our database version
-    private static final int DB_VERSION = 2;
+    private static final int DB_VERSION = 6;
 
     // below variable is for our table name.
     private static final String TABLE_NAME = "mybudget";
@@ -38,6 +38,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     // below variable is for our item type column.
     private static final String TYPE_COL = "type";
+    private static String TIME_CON = "";
 
     // creating a constructor for our database handler.
     public DBHandler(Context context) {
@@ -98,13 +99,13 @@ public class DBHandler extends SQLiteOpenHelper {
     public int readTotalCount(String itemType) {
         SQLiteDatabase db = this.getReadableDatabase();
         int res = 0;
-        String sqlSelect = "SELECT COUNT(*) FROM " + TABLE_NAME + " WHERE " + TYPE_COL + " = " + itemType;
-       System.out.println("total count SSSSSSSSSSSSSSSSSQL total:" + sqlSelect);
+        String sqlSelect = "SELECT COUNT(*) FROM " + TABLE_NAME + " WHERE " + TIME_CON + " "  + TYPE_COL + " = " + itemType;
+        System.out.println("total count SSSSSSSSSSSSSSSSSQL total:" + sqlSelect);
         Cursor cursor = db.rawQuery(sqlSelect, null);
         if (cursor.moveToFirst()) {
             do {
                 res = cursor.getInt(0);
-                System.out.printf("\n\ntotalcount RESSSSSSSSSSSSSSSSSSS: " + res + "\n\n");
+                //System.out.println("\n\ntotalcount RESSSSSSSSSSSSSSSSSSS: " + res + "\n\n");
                 break;
             } while (cursor.moveToNext());
         }
@@ -118,17 +119,21 @@ public class DBHandler extends SQLiteOpenHelper {
         // database for reading our database.
         SQLiteDatabase db = this.getReadableDatabase();
         String sqlSelect = "";
-        String timeWhereCondition = "";
-        if (datetime.length == 1 && datetime[0].matches("\\d{4}.\\d{2}.\\d{2}")) {
-            timeWhereCondition = TIME_COL + String.format(" > '%s' AND ", datetime[0]);
-        } else if (datetime.length == 2 && datetime[0].matches("\\d{4}.\\d{2}.\\d{2}") && datetime[1].matches("\\d{4}.\\d{2}.\\d{2}")) {
-            timeWhereCondition = String.format("%1$s > '%2$s' AND %1$s < %3$s AND ", TIME_COL, datetime[0], datetime[1]);
+        //String timeWhereCondition = "";
+        if (datetime.length == 1 && datetime[0].matches("\\d{4}-\\d{2}-\\d{2}")) {
+            TIME_CON = TIME_COL + String.format(" >= '%s' AND ", datetime[0]);
+        } else if (datetime.length == 2 && datetime[0].matches("\\d{4}-\\d{2}-\\d{2}") && datetime[1].matches("\\d{4}-\\d{2}-\\d{2}")) {
+            TIME_CON = String.format("%1$s >= '%2$s' AND %1$s <= '%3$s' AND ", TIME_COL, datetime[0], datetime[1]);
+            System.out.println("length == 2: " + (datetime.length == 2) + " " + datetime[0].matches("\\d{4}-\\d{2}-\\d{2}") + " " + datetime[1].matches("\\d{4}-\\d{2}-\\d{2}"));
         } else {
-            timeWhereCondition = "";
+            TIME_CON = "";
         }
-        // on below line we are creating a cursor with query to read data from database.
-        Cursor cursorItems = db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + timeWhereCondition + TYPE_COL + " IN (" + itemType + ");", null);
+        System.out.println("\n\n\nTime Condition: " + TIME_CON);
 
+        // on below line we are creating a cursor with query to read data from database.
+        sqlSelect = "SELECT * FROM " + TABLE_NAME + " WHERE " + TIME_CON + TYPE_COL + " IN (" + itemType + ");";
+        Cursor cursorItems = db.rawQuery(sqlSelect, null);
+        System.out.println("\n\n\n\nSQL Select " + sqlSelect);
         // on below line we are creating a new array list.
         ArrayList<ItemModal> itemModalArrayList = new ArrayList<>();
 
@@ -160,7 +165,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public int readSum(String itemType) {
         Integer res = 0;
         SQLiteDatabase db = this.getReadableDatabase();
-        String sqlSelect = "SELECT SUM(" + AMOUNT_COL + ") AS amount FROM " + TABLE_NAME + " WHERE " + TYPE_COL + " = " + itemType;
+        String sqlSelect = "SELECT SUM(" + AMOUNT_COL + ") AS amount FROM " + TABLE_NAME + " WHERE " + TIME_CON + " " + TYPE_COL + " = " + itemType;
         System.out.println("ssssssssssssssssssql: " + sqlSelect);
         Cursor cursor = db.rawQuery(sqlSelect, null);
         if (cursor.moveToFirst()) {

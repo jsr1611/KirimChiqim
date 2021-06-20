@@ -4,7 +4,7 @@
     <string name="add_new">Add New</string>
     <string name="show_all">Show All</string>
     <string name="enter_item_name">Enter Item Name</string>
-    <string name="enter_date_and_time">Enter Date (Ex: 2021.01.01) </string>
+    <string name="enter_date_and_time">Select Date</string>
     <string name="income">Income</string>
     <string name="expenditure">Expenditure</string>
     <string name="add_new_item">Add New Item</string>
@@ -16,7 +16,7 @@
     <string name="github" translatable="false">GitHub.com/jsr1611<a href="https://github.com/jsr1611"></a>
 </string>
     <string name="photo">Photo</string>
-    <string name="name">Name</string>
+    <string name="name">Developer</string>
     <string name="phone_number">Phone number</string>
     <string name="company">Company</string>
     <string name="about_me">Info</string>
@@ -30,6 +30,23 @@
     <string name="amount">Amount</string>
     <string name="TYPE_Income" translatable="false">Income</string>
     <string name="TYPE_Expenditure" translatable="false">Expenditure</string>
+    <string name="address">Address</string>
+    <string name="cheongju_city_s_korea">Cheongju city, S. Korea.</string>
+    <string name="JAN">JAN</string>
+    <string name="FEB">FEB</string>
+    <string name="MAR">MAR</string>
+    <string name="APR">APR</string>
+    <string name="MAY">MAY</string>
+    <string name="JUN">JUN</string>
+    <string name="JUL">JUL</string>
+    <string name="AUG">AUG</string>
+    <string name="SEP">SEP</string>
+    <string name="OCT">OCT</string>
+    <string name="NOV">NOV</string>
+    <string name="DEC">DEC</string>
+    <string name="selectStartDate">Select Start Date</string>
+    <string name="selectEndDate">Select End Date</string>
+    <string name="startDateBeforeEndDate">Start date has to be before or equal to the end date...</string>
 
 
 </resources>

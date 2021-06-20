@@ -8,11 +8,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ViewItems extends AppCompatActivity {
 
@@ -23,9 +25,10 @@ public class ViewItems extends AppCompatActivity {
     private ItemRVAdapter itemRVAdapter;
     private RecyclerView itemsRV;
     private CheckBox checkBox1, checkBox2;
-    private EditText date_time;
+    private Button button_startDate, button_EndDate;
     private TextView totalCount, Sum;
     private Button btn_Check;
+    private DatePicker myDatePicker_startDate, myDatePicker_endDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,16 +36,21 @@ public class ViewItems extends AppCompatActivity {
         setContentView(R.layout.activity_view_items);
         checkBox1 = findViewById(R.id.an_Chbx_idItemType1);
         checkBox2 = findViewById(R.id.an_Chbx_ItemType2);
-        date_time = findViewById(R.id.an_Edit_ItemDateTime);
+        button_startDate = findViewById(R.id.view_ItemDateTime);
+        button_EndDate = findViewById(R.id.view_ItemDateTime2);
         btn_Check = findViewById(R.id.btn_check);
         totalCount = findViewById(R.id.txt_total_count);
         Sum = findViewById(R.id.txt_total_amount);
+        myDatePicker_startDate = new DatePicker(ViewItems.this, button_startDate);
+        myDatePicker_endDate = new DatePicker(ViewItems.this, button_EndDate);
 
         btn_Check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String itemDateTime = date_time.getText().toString();
+                String itemStartDate = myDatePicker_startDate.getDateStamp();
+                String itemEndDate = myDatePicker_endDate.getDateStamp();
+
 
                 // validating if the text fields are empty or not.
                 if ((!checkBox1.isChecked() && !checkBox2.isChecked()) || (checkBox1.isChecked() && checkBox2.isChecked())) {
@@ -64,15 +72,49 @@ public class ViewItems extends AppCompatActivity {
                     itemModalArrayList = new ArrayList<>();
                     dbHandler = new DBHandler(ViewItems.this);
 
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                    try {
+
+                        if (!itemStartDate.isEmpty() && !itemEndDate.isEmpty() && !sdf.parse(itemStartDate).before(sdf.parse(itemEndDate)))
+                        {
+                            if (Objects.requireNonNull(sdf.parse(itemStartDate)).compareTo(sdf.parse(itemEndDate)) != 0)
+                            {
+                                Toast.makeText(ViewItems.this, R.string.startDateBeforeEndDate, Toast.LENGTH_SHORT).show();
+                                return;
+
+                            }
+                        }
+
+
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+
                     // getting our course array
                     // list from db handler class.
-                    itemModalArrayList = dbHandler.readItems(itemTypeRes, new String[]{itemDateTime});
+
+                    String[] datesSelected;
+                    if(!itemStartDate.isEmpty() && !itemEndDate.isEmpty()){
+                        datesSelected =new String[] {itemStartDate, itemEndDate} ;
+                    }
+                    else if(!itemStartDate.isEmpty()){
+                        datesSelected = new String[]{itemStartDate};
+                    }
+                    else if(!itemEndDate.isEmpty()){
+                        datesSelected = new String[]{itemEndDate};
+                    }
+                    else {
+                        datesSelected = new String[]{};
+                    }
+                    itemModalArrayList = dbHandler.readItems(itemTypeRes, datesSelected);
                     if (itemModalArrayList.size() == 0) {
+
                         Toast.makeText(ViewItems.this, R.string.no_data_found, Toast.LENGTH_SHORT).show();
                         return;
                     } else {
                         // on below line passing our array lost to our adapter class.
-                        itemRVAdapter = new ItemRVAdapter(itemModalArrayList, ViewItems.this);
+                        itemRVAdapter = new ItemRVAdapter(itemModalArrayList, ViewItems.this, myDatePicker_startDate);
                         itemsRV = findViewById(R.id.idRVItems);
 
                         // setting layout manager for our recycler view.
@@ -86,18 +128,32 @@ public class ViewItems extends AppCompatActivity {
 
                     // getting total count
                     int totalCount = dbHandler.readTotalCount(itemTypeRes);
-                    System.out.println("TotalCounttttttttttttttttttttttttttt: " + totalCount);
+                    //System.out.println("TotalCounttttttttttttttttttttttttttt: " + totalCount);
                     ViewItems.this.totalCount.setText(String.valueOf(totalCount));
 
                     // getting total sum
                     int totalSum = dbHandler.readSum(itemTypeRes);
-                    System.out.println("TotalSummmmmmmmmmmmmmmmmmmmmmmmmmmm: " + totalSum);
+                    //System.out.println("TotalSummmmmmmmmmmmmmmmmmmmmmmmmmmm: " + totalSum);
                     Sum.setText(String.valueOf(totalSum));
 
 
                 }
             }
         });
-
+        button_startDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDatePicker_startDate.openDatePicker(v);
+                //setDateStamp(mydatePicker.getDateStamp());
+                //System.out.println("TTTTTTTTTTTTTTTTTTime selected: " + getDateStamp());
+                //dateButton_itemDateSelect.setText(mydatePicker.getBtnText());
+            }
+        });
+        button_EndDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDatePicker_endDate.openDatePicker(v);
+            }
+        });
     }
 }

@@ -13,11 +13,11 @@ public class About extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-        txtView_linkedin = findViewById(R.id.textView8_linkedin2);
-        txtView_gitHub = findViewById(R.id.textView_github2);
+        //txtView_linkedin = findViewById(R.id.textView8_linkedin2);
+        //txtView_gitHub = findViewById(R.id.textView_github2);
 
-        txtView_linkedin.setMovementMethod(LinkMovementMethod.getInstance());
-        txtView_gitHub.setMovementMethod(LinkMovementMethod.getInstance());
+        //txtView_linkedin.setMovementMethod(LinkMovementMethod.getInstance());
+        //txtView_gitHub.setMovementMethod(LinkMovementMethod.getInstance());
 
     }
 }

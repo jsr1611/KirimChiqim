@@ -25,15 +25,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:inputType="textCapSentences"
         android:hint="@string/enter_item_name" />
 
     <!--edit text to enter course duration-->
-    <EditText
-        android:id="@+id/an_Edit_ItemDateTime"
+    <Button
+        android:id="@+id/an_SelectItemDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:hint="@string/enter_date_and_time" />
+        android:textSize="20sp"
+        android:textAlignment="center"
+        style="?android:spinnerStyle"
+        android:textColor="@color/black"
+        android:hint="@string/enter_date_and_time"
+        android:gravity="center_horizontal" />
 
     <!--edit text to display course tracks-->
     <LinearLayout
@@ -73,6 +79,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:inputType="textCapSentences"
         android:hint="@string/enter_description" />
 
     <!--button for adding new course-->
