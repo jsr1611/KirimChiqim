@@ -16,7 +16,7 @@
     <string name="about_me">Dasturchi haqida</string>
     <string name="enter_amount">Narxini kiriting</string>
     <string name="alert_enter_all_values">Iltimos, barcha qatorlarni to`ldiring...</string>
-    <string name="alert_check_only_one_box">Iltimos, faqat bitta katakchani tanlan</string>
+    <string name="alert_check_only_one_box">Iltimos, kamida bitta katakchani tanlan</string>
     <string name="alert_item_added_successfully">Ma`lumot muvaffaqiyatli saqlandi.</string>
     <string name="totalCount">Jami (dona)</string>
     <string name="totalAmount">Jami</string>

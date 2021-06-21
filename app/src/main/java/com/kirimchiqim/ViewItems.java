@@ -53,21 +53,18 @@ public class ViewItems extends AppCompatActivity {
 
 
                 // validating if the text fields are empty or not.
-                if ((!checkBox1.isChecked() && !checkBox2.isChecked()) || (checkBox1.isChecked() && checkBox2.isChecked())) {
+                if (!checkBox1.isChecked() && !checkBox2.isChecked()) {
                     Toast.makeText(ViewItems.this, R.string.alert_check_only_one_box, Toast.LENGTH_SHORT).show();
                     return;
                 } else {
                     String itemTypeRes = "";
-                    if (checkBox1.isChecked()) {
-                        itemTypeRes = String.format("'%s'", getString(R.string.TYPE_Income));
+                    if (checkBox1.isChecked() && checkBox2.isChecked()) {
+                        itemTypeRes = String.format("'%s', '%s'", getString(R.string.TYPE_Income), getString(R.string.TYPE_Expenditure));
                     } else if (checkBox2.isChecked()) {
                         itemTypeRes = String.format("'%s'", getString(R.string.TYPE_Expenditure));
-                    } /*else {
-                    checkBox1.setSelected(true);
-                    itemTypeRes = "kirim";
-                }*/
-
-
+                    } else {
+                        itemTypeRes = String.format("'%s'", getString(R.string.TYPE_Income));
+                    }
                     // initializing our all variables.
                     itemModalArrayList = new ArrayList<>();
                     dbHandler = new DBHandler(ViewItems.this);
@@ -75,10 +72,8 @@ public class ViewItems extends AppCompatActivity {
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     try {
 
-                        if (!itemStartDate.isEmpty() && !itemEndDate.isEmpty() && !sdf.parse(itemStartDate).before(sdf.parse(itemEndDate)))
-                        {
-                            if (Objects.requireNonNull(sdf.parse(itemStartDate)).compareTo(sdf.parse(itemEndDate)) != 0)
-                            {
+                        if (!itemStartDate.isEmpty() && !itemEndDate.isEmpty() && !sdf.parse(itemStartDate).before(sdf.parse(itemEndDate))) {
+                            if (Objects.requireNonNull(sdf.parse(itemStartDate)).compareTo(sdf.parse(itemEndDate)) != 0) {
                                 Toast.makeText(ViewItems.this, R.string.startDateBeforeEndDate, Toast.LENGTH_SHORT).show();
                                 return;
 
@@ -91,49 +86,43 @@ public class ViewItems extends AppCompatActivity {
                     }
 
 
-                    // getting our course array
+                    // getting our item array
                     // list from db handler class.
 
                     String[] datesSelected;
-                    if(!itemStartDate.isEmpty() && !itemEndDate.isEmpty()){
-                        datesSelected =new String[] {itemStartDate, itemEndDate} ;
-                    }
-                    else if(!itemStartDate.isEmpty()){
-                        datesSelected = new String[]{itemStartDate};
-                    }
-                    else if(!itemEndDate.isEmpty()){
-                        datesSelected = new String[]{itemEndDate};
-                    }
-                    else {
-                        datesSelected = new String[]{};
+                    if (!itemStartDate.isEmpty() && !itemEndDate.isEmpty()) {
+                        datesSelected = new String[]{itemStartDate, itemEndDate};
+                    } else if (!itemStartDate.isEmpty()) {
+                        datesSelected = new String[]{itemStartDate, ""};
+                    } else if (!itemEndDate.isEmpty()) {
+                        datesSelected = new String[]{"", itemEndDate};
+                    } else {
+                        datesSelected = new String[]{"", ""};
                     }
                     itemModalArrayList = dbHandler.readItems(itemTypeRes, datesSelected);
+                    // on below line passing our array lost to our adapter class.
+                    itemRVAdapter = new ItemRVAdapter(itemModalArrayList, ViewItems.this, myDatePicker_startDate);
+                    itemsRV = findViewById(R.id.idRVItems);
+
+
+                    // setting layout manager for our recycler view.
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ViewItems.this, RecyclerView.VERTICAL, false);
+                    itemsRV.setLayoutManager(linearLayoutManager);
+
+                    // setting our adapter to recycler view.
+                    itemsRV.setAdapter(itemRVAdapter);
                     if (itemModalArrayList.size() == 0) {
 
                         Toast.makeText(ViewItems.this, R.string.no_data_found, Toast.LENGTH_SHORT).show();
                         return;
-                    } else {
-                        // on below line passing our array lost to our adapter class.
-                        itemRVAdapter = new ItemRVAdapter(itemModalArrayList, ViewItems.this, myDatePicker_startDate);
-                        itemsRV = findViewById(R.id.idRVItems);
-
-                        // setting layout manager for our recycler view.
-                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ViewItems.this, RecyclerView.VERTICAL, false);
-                        itemsRV.setLayoutManager(linearLayoutManager);
-
-                        // setting our adapter to recycler view.
-                        itemsRV.setAdapter(itemRVAdapter);
                     }
-
 
                     // getting total count
                     int totalCount = dbHandler.readTotalCount(itemTypeRes);
-                    //System.out.println("TotalCounttttttttttttttttttttttttttt: " + totalCount);
                     ViewItems.this.totalCount.setText(String.valueOf(totalCount));
 
                     // getting total sum
                     int totalSum = dbHandler.readSum(itemTypeRes);
-                    //System.out.println("TotalSummmmmmmmmmmmmmmmmmmmmmmmmmmm: " + totalSum);
                     Sum.setText(String.valueOf(totalSum));
 
 
@@ -144,9 +133,6 @@ public class ViewItems extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 myDatePicker_startDate.openDatePicker(v);
-                //setDateStamp(mydatePicker.getDateStamp());
-                //System.out.println("TTTTTTTTTTTTTTTTTTime selected: " + getDateStamp());
-                //dateButton_itemDateSelect.setText(mydatePicker.getBtnText());
             }
         });
         button_EndDate.setOnClickListener(new View.OnClickListener() {

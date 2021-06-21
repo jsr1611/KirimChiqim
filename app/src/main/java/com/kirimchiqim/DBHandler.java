@@ -99,7 +99,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public int readTotalCount(String itemType) {
         SQLiteDatabase db = this.getReadableDatabase();
         int res = 0;
-        String sqlSelect = "SELECT COUNT(*) FROM " + TABLE_NAME + " WHERE " + TIME_CON + " "  + TYPE_COL + " = " + itemType;
+        String sqlSelect = "SELECT COUNT(*) FROM " + TABLE_NAME + " WHERE " + TIME_CON + " " + TYPE_COL + " IN (" + itemType + ");";
         System.out.println("total count SSSSSSSSSSSSSSSSSQL total:" + sqlSelect);
         Cursor cursor = db.rawQuery(sqlSelect, null);
         if (cursor.moveToFirst()) {
@@ -120,12 +120,19 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String sqlSelect = "";
         //String timeWhereCondition = "";
-        if (datetime.length == 1 && datetime[0].matches("\\d{4}-\\d{2}-\\d{2}")) {
+
+        if (datetime.length == 2 && datetime[0].matches("\\d{4}-\\d{2}-\\d{2}") && datetime[1].isEmpty()) {
+            // if start time was entered and the end time was not
             TIME_CON = TIME_COL + String.format(" >= '%s' AND ", datetime[0]);
+        } else if (datetime.length == 2 && datetime[1].matches("\\d{4}-\\d{2}-\\d{2}") && datetime[0].isEmpty()) {
+            // if end time was entered but start time was not
+            TIME_CON = TIME_COL + String.format(" <= '%s' AND ", datetime[1]);
         } else if (datetime.length == 2 && datetime[0].matches("\\d{4}-\\d{2}-\\d{2}") && datetime[1].matches("\\d{4}-\\d{2}-\\d{2}")) {
+            // if both start time and end time was entered
             TIME_CON = String.format("%1$s >= '%2$s' AND %1$s <= '%3$s' AND ", TIME_COL, datetime[0], datetime[1]);
             System.out.println("length == 2: " + (datetime.length == 2) + " " + datetime[0].matches("\\d{4}-\\d{2}-\\d{2}") + " " + datetime[1].matches("\\d{4}-\\d{2}-\\d{2}"));
         } else {
+            // if non of the start and end times was entered.
             TIME_CON = "";
         }
         System.out.println("\n\n\nTime Condition: " + TIME_CON);
@@ -165,7 +172,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public int readSum(String itemType) {
         Integer res = 0;
         SQLiteDatabase db = this.getReadableDatabase();
-        String sqlSelect = "SELECT SUM(" + AMOUNT_COL + ") AS amount FROM " + TABLE_NAME + " WHERE " + TIME_CON + " " + TYPE_COL + " = " + itemType;
+        String sqlSelect = "SELECT SUM(" + AMOUNT_COL + ") AS amount FROM " + TABLE_NAME + " WHERE " + TIME_CON + " " + TYPE_COL + " IN (" + itemType + ");";
         System.out.println("ssssssssssssssssssql: " + sqlSelect);
         Cursor cursor = db.rawQuery(sqlSelect, null);
         if (cursor.moveToFirst()) {

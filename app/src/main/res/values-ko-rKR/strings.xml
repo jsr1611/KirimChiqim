@@ -17,7 +17,7 @@
     <string name="about_me">개발자 정보</string>
     <string name="enter_amount">금액 입력</string>
     <string name="alert_enter_all_values">필수 정보 모두 입력해 주세요...</string>
-    <string name="alert_check_only_one_box">박스 하나만 체크해 주세요...</string>
+    <string name="alert_check_only_one_box">박스 하나라도 체크해 주세요...</string>
     <string name="alert_item_added_successfully">아이템 추가에 성공했습니다.</string>
     <string name="totalCount">총(개)</string>
     <string name="totalAmount">총 금액</string>

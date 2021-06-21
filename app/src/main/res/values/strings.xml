@@ -22,7 +22,7 @@
     <string name="about_me">Info</string>
     <string name="enter_amount">Enter Amount</string>
     <string name="alert_enter_all_values">Please enter all the data...</string>
-    <string name="alert_check_only_one_box">Please,  check only one box...</string>
+    <string name="alert_check_only_one_box">Please,  check at least one box...</string>
     <string name="alert_item_added_successfully">Item has been added successfully.</string>
     <string name="totalCount">Total (pcs)</string>
     <string name="totalAmount">Total Amount</string>
