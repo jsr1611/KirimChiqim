@@ -37,4 +37,7 @@
     <string name="OCT">Октабр</string>
     <string name="NOV">Ноябр</string>
     <string name="DEC">Декабр</string>
+    <string name="selectStartDate">Бошланғич сана</string>
+    <string name="selectEndDate">Тугаш сана</string>
+    <string name="startDateBeforeEndDate">Бошланғич сана тугаш санадан олдин ёки бир ҳил бўлиши керак...</string>
 </resources>

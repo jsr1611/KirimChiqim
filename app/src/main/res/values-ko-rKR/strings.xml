@@ -37,4 +37,7 @@
     <string name="OCT">10</string>
     <string name="NOV">11</string>
     <string name="DEC">12</string>
+    <string name="selectStartDate">시작 날짜 선택</string>
+    <string name="selectEndDate">종료 날짜 선택</string>
+    <string name="startDateBeforeEndDate">시작날짜가 종료날짜보다 이전이거나 같아야 한다...</string>
 </resources>

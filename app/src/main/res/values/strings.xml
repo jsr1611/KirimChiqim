@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">KirimChiqim</string>
+    <string name="app_title" translatable="false">KirimChiqim</string>
     <string name="hello">Welcome!</string>
     <string name="add_new">Add New</string>
     <string name="show_all">Show All</string>
@@ -47,6 +47,7 @@
     <string name="selectStartDate">Select Start Date</string>
     <string name="selectEndDate">Select End Date</string>
     <string name="startDateBeforeEndDate">Start date has to be before or equal to the end date...</string>
+    <string name="app_name" translatable="false">KirimChiqim App</string>
 
 
 </resources>
