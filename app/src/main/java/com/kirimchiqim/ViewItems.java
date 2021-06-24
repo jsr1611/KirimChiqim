@@ -111,12 +111,6 @@ public class ViewItems extends AppCompatActivity {
 
                     // setting our adapter to recycler view.
                     itemsRV.setAdapter(itemRVAdapter);
-                    if (itemModalArrayList.size() == 0) {
-
-                        Toast.makeText(ViewItems.this, R.string.no_data_found, Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-
                     // getting total count
                     int totalCount = dbHandler.readTotalCount(itemTypeRes);
                     ViewItems.this.totalCount.setText(String.valueOf(totalCount));
@@ -124,6 +118,13 @@ public class ViewItems extends AppCompatActivity {
                     // getting total sum
                     int totalSum = dbHandler.readSum(itemTypeRes);
                     Sum.setText(String.valueOf(totalSum));
+
+                    if (itemModalArrayList.size() == 0) {
+
+                        Toast.makeText(ViewItems.this, R.string.no_data_found, Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                  
 
 
                 }

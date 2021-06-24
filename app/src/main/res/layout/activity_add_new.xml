@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:inputType="textCapSentences"
+        android:textColor="?android:textColorPrimary"
         android:hint="@string/enter_item_name" />
 
     <!--edit text to enter course duration-->
@@ -37,7 +38,7 @@
         android:textSize="20sp"
         android:textAlignment="center"
         style="?android:spinnerStyle"
-        android:textColor="@color/black"
+        android:textColor="?android:textColorPrimary"
         android:hint="@string/enter_date_and_time"
         android:gravity="center_horizontal" />
 
@@ -88,8 +89,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:textColor="?android:textColorPrimary"
         android:text="@string/add_new"
         android:textAllCaps="false" />
-
 
 </LinearLayout>

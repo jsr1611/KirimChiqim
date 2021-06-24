@@ -69,6 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:text="@string/check"
+        android:textColor="?android:textColorPrimary"
         android:textAllCaps="false" />
 
     <LinearLayout

@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
-            android:text="ver. 1.5.4" />
+            android:text="ver. 1.5.6" />
 
     </LinearLayout>
 
