@@ -21,7 +21,7 @@ public class ViewItems extends AppCompatActivity {
     // creating variables for our array list,
     // dbhandler, adapter and recycler view.
     private ArrayList<ItemModal> itemModalArrayList;
-    private DBHandler dbHandler;
+    private DBHelper dbHelper;
     private ItemRVAdapter itemRVAdapter;
     private RecyclerView itemsRV;
     private CheckBox checkBox1, checkBox2;
@@ -67,7 +67,7 @@ public class ViewItems extends AppCompatActivity {
                     }
                     // initializing our all variables.
                     itemModalArrayList = new ArrayList<>();
-                    dbHandler = new DBHandler(ViewItems.this);
+                    dbHelper = new DBHelper(ViewItems.this);
 
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     try {
@@ -99,7 +99,7 @@ public class ViewItems extends AppCompatActivity {
                     } else {
                         datesSelected = new String[]{"", ""};
                     }
-                    itemModalArrayList = dbHandler.readItems(itemTypeRes, datesSelected);
+                    itemModalArrayList = dbHelper.readItems(itemTypeRes, datesSelected);
                     // on below line passing our array lost to our adapter class.
                     itemRVAdapter = new ItemRVAdapter(itemModalArrayList, ViewItems.this, myDatePicker_startDate);
                     itemsRV = findViewById(R.id.idRVItems);
@@ -112,11 +112,11 @@ public class ViewItems extends AppCompatActivity {
                     // setting our adapter to recycler view.
                     itemsRV.setAdapter(itemRVAdapter);
                     // getting total count
-                    int totalCount = dbHandler.readTotalCount(itemTypeRes);
+                    int totalCount = dbHelper.readTotalCount(itemTypeRes);
                     ViewItems.this.totalCount.setText(String.valueOf(totalCount));
 
                     // getting total sum
-                    int totalSum = dbHandler.readSum(itemTypeRes);
+                    int totalSum = dbHelper.readSum(itemTypeRes);
                     Sum.setText(String.valueOf(totalSum));
 
                     if (itemModalArrayList.size() == 0) {

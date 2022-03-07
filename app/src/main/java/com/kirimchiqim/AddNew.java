@@ -2,8 +2,6 @@ package com.kirimchiqim;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
-import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -12,15 +10,13 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.Calendar;
-
 public class AddNew extends AppCompatActivity {
     // creating variables for our edittext, button and dbhandler
     //private EditText itemNameEdt, itemTypeEdt, itemTimeEdt, itemDescriptionEdt;
     private EditText itemNameEdt, itemAmountEdt, itemDescriptionEdt;
     private CheckBox itemType1, itemType2;
     private Button addNewItem, dateButton_itemDateSelect;
-    private DBHandler dbHandler;
+    private DBHelper dbHelper;
     private DatePicker mydatePicker;
 
     public String getDateStamp() {
@@ -39,7 +35,7 @@ public class AddNew extends AppCompatActivity {
         setContentView(R.layout.activity_add_new);
         addNewItem = findViewById(R.id.an_btn_addNew);
 
-        dbHandler = new DBHandler(AddNew.this);
+        dbHelper = new DBHelper(AddNew.this);
 
 
         // initializing all our variables.
@@ -54,7 +50,7 @@ public class AddNew extends AppCompatActivity {
 
         // creating a new dbhandler class
         // and passing our context to it.
-        dbHandler = new DBHandler(AddNew.this);
+        dbHelper = new DBHelper(AddNew.this);
 
 
 
@@ -90,7 +86,7 @@ public class AddNew extends AppCompatActivity {
 
                 // on below line we are calling a method to add new
                 // course to sqlite data and pass all our values to it.
-                dbHandler.addNewItem(itemName, itemType, itemAmount.toString(), itemDateTime, itemDescription);
+                dbHelper.addNewItem(itemName, itemType, itemAmount.toString(), itemDateTime, itemDescription);
 
                 // after adding the data we are displaying a toast message.
                 Toast.makeText(AddNew.this, R.string.alert_item_added_successfully, Toast.LENGTH_SHORT).show();

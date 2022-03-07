@@ -9,9 +9,11 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final int REQUEST_CODE_PERMISSIONS = 2;
+
     private Button addNewBtn, readItemsBtn, aboutMe;
     // creating variables for our edittext, button and dbhandler
-    private DBHandler dbHandler;
+    private DBHelper dbHelper;
 
 
     @Override
@@ -22,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         readItemsBtn = findViewById(R.id.btn_goto_show_all);
         aboutMe = findViewById(R.id.btn_goto_aboutme);
 
-        dbHandler = new DBHandler(MainActivity.this);
+        dbHelper = new DBHelper(MainActivity.this);
         addNewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
