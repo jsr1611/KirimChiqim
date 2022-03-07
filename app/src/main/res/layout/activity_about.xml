@@ -34,7 +34,7 @@
                 android:layout_marginLeft="100dp"
                 android:layout_marginTop="20dp"
                 android:layout_toRightOf="@id/textView_name"
-                android:src="@drawable/_" />
+                android:src="@drawable/img" />
 
 
         </RelativeLayout>
