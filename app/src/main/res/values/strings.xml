@@ -48,6 +48,11 @@
     <string name="selectEndDate">Select End Date</string>
     <string name="startDateBeforeEndDate">Start date has to be before or equal to the end date...</string>
     <string name="app_name" translatable="false">KirimChiqim App</string>
+    <string name="action_backup">action backup</string>
+    <string name="action_import">action import</string>
+    <string name="action_backup_drive">action_backup_drive</string>
+    <string name="action_import_drive">action_import_drive</string>
+    <string name="action_clear_data"> action_clear_data</string>
 
 
 </resources>

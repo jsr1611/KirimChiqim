@@ -10,6 +10,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.kirimchiqim.db.DBHelper;
+
 public class AddNew extends AppCompatActivity {
     // creating variables for our edittext, button and dbhandler
     //private EditText itemNameEdt, itemTypeEdt, itemTimeEdt, itemDescriptionEdt;

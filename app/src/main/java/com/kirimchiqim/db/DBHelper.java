@@ -1,4 +1,4 @@
-package com.kirimchiqim;
+package com.kirimchiqim.db;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.kirimchiqim.ItemModal;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -18,7 +20,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     // creating a constant variables for our database.
     // below variable is for our database name.
-    private static final String DB_NAME = "kirmchiqimdb";
+    public static final String DB_NAME = "kirmchiqimdb";
 
     // below int is our database version
     private static final int DB_VERSION = 6;

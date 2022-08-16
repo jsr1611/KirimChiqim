@@ -5,7 +5,7 @@ import android.app.Activity;
 import android.content.pm.PackageManager;
 //import android.support.v4.app.ActivityCompat;
 
-import static com.kirimchiqim.MainActivity.REQUEST_CODE_PERMISSIONS;
+import static com.kirimchiqim.ui.MainActivity.REQUEST_CODE_PERMISSIONS;
 
 import androidx.core.app.ActivityCompat;
 

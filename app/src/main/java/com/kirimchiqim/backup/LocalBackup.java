@@ -1,50 +1,72 @@
-package com.kirimchiqim;
+/*
+ *   Copyright 2016 Marco Gomiero
+ *
+ *   Licensed under the Apache License, Version 2.0 (the "License");
+ *   you may not use this file except in compliance with the License.
+ *   You may obtain a copy of the License at
+ *
+ *       http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *   Unless required by applicable law or agreed to in writing, software
+ *   distributed under the License is distributed on an "AS IS" BASIS,
+ *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *   See the License for the specific language governing permissions and
+ *   limitations under the License.
+ *
+ */
+
+package com.kirimchiqim.backup;
 
 import android.app.AlertDialog;
 import android.os.Environment;
+//import android.support.v7.app.AlertDialog;
 import android.text.InputType;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.kirimchiqim.Permissions;
+import com.kirimchiqim.R;
+import com.kirimchiqim.db.DBHelper;
+import com.kirimchiqim.ui.MainActivity;
+
 import java.io.File;
 
-public class LocalBackUp {
+public class LocalBackup {
+
     private MainActivity activity;
 
-    public LocalBackUp(MainActivity activity) {
+    public LocalBackup(MainActivity activity) {
         this.activity = activity;
     }
-    public void performBackUp(final DBHelper db, final String outFileName){
+
+    //ask to the user a name for the backup and perform it. The backup will be saved to a custom folder.
+    public void performBackup(final DBHelper db, final String outFileName) {
 
         Permissions.verifyStoragePermissions(activity);
 
         File folder = new File(Environment.getExternalStorageDirectory() + File.separator + activity.getResources().getString(R.string.app_name));
 
         boolean success = true;
-
-        if(!folder.exists()){
+        if (!folder.exists())
             success = folder.mkdirs();
-        }
-        if (success){
+        if (success) {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(activity);
             builder.setTitle("Backup Name");
-
             final EditText input = new EditText(activity);
             input.setInputType(InputType.TYPE_CLASS_TEXT);
             builder.setView(input);
             builder.setPositiveButton("Save", (dialog, which) -> {
-               String m_Text = input.getText().toString();
-               String out = outFileName + m_Text + ".db";
-               db.backup(out);
+                String m_Text = input.getText().toString();
+                String out = outFileName + m_Text + ".db";
+                db.backup(out);
             });
-            builder.setNegativeButton("Cancel", (dialog, which)-> dialog.cancel());
+            builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
 
             builder.show();
-        }else {
-            Toast.makeText(activity, "Unable to create directory. Please, retry.", Toast.LENGTH_SHORT).show();
-        }
+        } else
+            Toast.makeText(activity, "Unable to create directory. Retry", Toast.LENGTH_SHORT).show();
     }
 
     //ask to the user what backup to restore
@@ -79,4 +101,5 @@ public class LocalBackUp {
         } else
             Toast.makeText(activity, "Backup folder not present.\nDo a backup before a restore!", Toast.LENGTH_SHORT).show();
     }
+
 }
