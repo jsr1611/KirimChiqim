@@ -306,8 +306,8 @@ public class DBHelper extends SQLiteOpenHelper {
         String result = "";
         if(cursor.moveToFirst()){
             do {
-                result = cursor.getString(0);
-                Log.i("Balance Sheet", cursor.getString(0) + " at " +cursor.getString(1));
+                result = cursor.getString(cursor.getColumnIndex(COL_BALANCE));
+                Log.i("Balance Sheet", cursor.getString(cursor.getColumnIndex(COL_BALANCE)) + " at " +cursor.getString(cursor.getColumnIndex(COL_CREATEDAT)));
                 break;
             }while (cursor.moveToNext());
         }
@@ -349,21 +349,22 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public void importDB(String inFileName) {
-        final String outFileName = mContext.getDatabasePath(DB_NAME).toString();
+        final String outFileName = mContext.getDatabasePath(DB_NAME).toString(); //"/data/data/" + mContext.getPackageName() + "/databases/" + DB_NAME; //
         File curDb = new File(outFileName);
         File backupDb = new File(inFileName);
         try {
             Log.i("DB path src", inFileName);
             Log.i("DB path dst", outFileName);
 //            File dbFile = new File(inFileName);
+            FileChannel src = new FileInputStream(backupDb).getChannel();
+            FileChannel dst = new FileOutputStream(curDb).getChannel();
+            dst.transferFrom(src, 0, src.size());
+            src.close();
+            dst.close();
+            Log.i("DB Import", "Import Completed.");
+            Toast.makeText(mContext, "Import Completed.", Toast.LENGTH_LONG).show();
             if(curDb.exists()){
-                FileChannel src = new FileInputStream(backupDb).getChannel();
-                FileChannel dst = new FileOutputStream(curDb).getChannel();
-                dst.transferFrom(src, 0, src.size());
-                src.close();
-                dst.close();
-                Log.i("DB Import", "Import Completed.");
-                Toast.makeText(mContext, "Import Completed.", Toast.LENGTH_LONG).show();
+
             }
             else {
                 Log.w("Error", "Database does not exist.");
