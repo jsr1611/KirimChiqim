@@ -17,12 +17,14 @@
 
 package com.kirimchiqim.backup;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.os.Environment;
 //import android.support.v7.app.AlertDialog;
 import android.text.InputType;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kirimchiqim.Permissions;
@@ -31,6 +33,8 @@ import com.kirimchiqim.db.DBHelper;
 import com.kirimchiqim.ui.MainActivity;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class LocalBackup {
 
@@ -45,8 +49,7 @@ public class LocalBackup {
 
         Permissions.verifyStoragePermissions(activity);
 
-        File folder = new File(Environment.getExternalStorageDirectory() + File.separator + activity.getResources().getString(R.string.app_name));
-
+        File folder = new File(Environment.getExternalStorageDirectory() + File.separator + activity.getResources().getString(R.string.app_title));
         boolean success = true;
         if (!folder.exists())
             success = folder.mkdirs();
@@ -54,16 +57,16 @@ public class LocalBackup {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(activity);
             builder.setTitle("Backup Name");
-            final EditText input = new EditText(activity);
-            input.setInputType(InputType.TYPE_CLASS_TEXT);
+            final TextView input = new EditText(activity);
+//            input.setInputType(InputType.TYPE_CLASS_TEXT);
+            @SuppressLint("SimpleDateFormat") String backupName = "db_backup_" + (new SimpleDateFormat("yyyyMMdd_HHmmss")).format(new Date());
+            input.setText(backupName);
             builder.setView(input);
             builder.setPositiveButton("Save", (dialog, which) -> {
-                String m_Text = input.getText().toString();
-                String out = outFileName + m_Text + ".db";
+                String out = outFileName + backupName + ".db";
                 db.backup(out);
             });
             builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
-
             builder.show();
         } else
             Toast.makeText(activity, "Unable to create directory. Retry", Toast.LENGTH_SHORT).show();
@@ -74,7 +77,7 @@ public class LocalBackup {
 
         Permissions.verifyStoragePermissions(activity);
 
-        File folder = new File(Environment.getExternalStorageDirectory() + File.separator + activity.getResources().getString(R.string.app_name));
+        File folder = new File(Environment.getExternalStorageDirectory() + File.separator + activity.getResources().getString(R.string.app_title));
         if (folder.exists()) {
 
             final File[] files = folder.listFiles();

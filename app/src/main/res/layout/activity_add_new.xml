@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:orientation="vertical"
-    tools:context=".AddNew">
+    tools:context=".AddNew"
+    tools:showIn="@layout/activity_add_new"
+    >
 
 
     <!--Edit text to enter course name-->
@@ -27,19 +30,18 @@
         android:layout_margin="10dp"
         android:inputType="textCapSentences"
         android:textColor="?android:textColorPrimary"
-        android:hint="@string/enter_item_name" />
+        android:hint="@string/enter_item_name"
+        android:autofillHints="" />
 
     <!--edit text to enter course duration-->
-    <Button
-        android:id="@+id/an_SelectItemDate"
+    <TextView
+        android:id="@+id/date_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:textSize="20sp"
+        android:text="@string/enter_date_and_time"
         android:textAlignment="center"
-        style="?android:spinnerStyle"
-        android:textColor="?android:textColorPrimary"
-        android:hint="@string/enter_date_and_time"
         android:gravity="center_horizontal" />
 
     <!--edit text to display course tracks-->

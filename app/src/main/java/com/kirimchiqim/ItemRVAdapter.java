@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
@@ -19,6 +18,7 @@ public class ItemRVAdapter extends RecyclerView.Adapter<ItemRVAdapter.ViewHolder
     private ArrayList<ItemModal> itemModalArrayList;
     private Context context;
     private DatePicker myDatePicker;
+    private int selectedItem = RecyclerView.NO_POSITION;
 
     // constructor
     public ItemRVAdapter(ArrayList<ItemModal> itemModalArrayList, Context context, DatePicker datePicker) {
@@ -64,6 +64,7 @@ public class ItemRVAdapter extends RecyclerView.Adapter<ItemRVAdapter.ViewHolder
         String itemTypeStr = modal.getItemType().equals("Income") ? context.getResources().getString(R.string.income) : context.getResources().getString(R.string.expenditure);
 
         holder.itemTypeTV.setText(String.valueOf(itemTypeStr));
+        holder.itemView.setSelected(selectedItem == position);
     }
 
     @Override
@@ -86,6 +87,14 @@ public class ItemRVAdapter extends RecyclerView.Adapter<ItemRVAdapter.ViewHolder
             itemAmountTV = itemView.findViewById(R.id.idTVItemAmount);
             itemDateTimeTV = itemView.findViewById(R.id.idTVDateTime);
             itemTypeTV = itemView.findViewById(R.id.idTVItemType);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    notifyItemChanged(selectedItem);
+                }
+            });
         }
     }
+
 }

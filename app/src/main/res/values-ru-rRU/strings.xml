@@ -23,7 +23,7 @@
     <string name="no_data_found">Маълумот мажуд эмас.</string>
     <string name="amount">Қиймати</string>
     <string name="name">Дастурчи</string>
-    <string name="cheongju_city_s_korea">Жанубий Корея, Чонгжу шаҳри</string>
+    <string name="city">Жанубий Корея, Сеул шаҳри</string>
     <string name="address">Манзил</string>
     <string name="JAN">Январ</string>
     <string name="FEB">Феврал</string>
@@ -40,4 +40,5 @@
     <string name="selectStartDate">Бошланғич сана</string>
     <string name="selectEndDate">Тугаш сана</string>
     <string name="startDateBeforeEndDate">Бошланғич сана тугаш санадан олдин ёки бир ҳил бўлиши керак...</string>
+    <string name="action_recalculate_Balance">Recalculate Balance</string>
 </resources>

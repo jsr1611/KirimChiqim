@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ViewItems">
 
     <!--edit text to display course tracks-->
@@ -12,31 +14,26 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Button
+        <TextView
             android:id="@+id/view_ItemDateTime"
-            style="?android:spinnerStyle"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:gravity="center_horizontal"
-            android:hint="@string/selectStartDate"
+            android:textSize="20sp"
+            android:text="@string/selectStartDate"
             android:textAlignment="center"
-            android:textColor="?android:textColorPrimary"
-            android:textSize="20sp" />
-
-        <Button
+            android:gravity="center_horizontal" />
+        <TextView
             android:id="@+id/view_ItemDateTime2"
-            style="?android:spinnerStyle"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:gravity="center_horizontal"
-            android:hint="@string/selectEndDate"
+            android:textSize="20sp"
+            android:text="@string/selectEndDate"
             android:textAlignment="center"
-            android:textColor="?android:textColorPrimary"
-            android:textSize="20sp" />
+            android:gravity="center_horizontal" />
     </LinearLayout>
     <!--edit text to display course tracks-->
     <LinearLayout
@@ -48,7 +45,8 @@
             android:id="@+id/an_Chbx_idItemType1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:layout_weight="1"
             android:text="@string/income" />
 
@@ -56,18 +54,20 @@
             android:id="@+id/an_Chbx_ItemType2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:layout_weight="1"
             android:text="@string/expenditure" />
 
     </LinearLayout>
 
-    <!--button for adding new course-->
+    <!--button for displaying all items-->
     <Button
         android:id="@+id/btn_check"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:text="@string/check"
         android:textAllCaps="false" />
 
@@ -80,7 +80,8 @@
             android:id="@+id/txtView_total_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:layout_weight="1"
             android:text="@string/totalCount" />
 
@@ -88,7 +89,8 @@
             android:id="@+id/txt_total_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:layout_weight="1"
             android:text="0" />
 
@@ -96,7 +98,8 @@
             android:id="@+id/txtView_total_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:layout_weight="1"
             android:text="@string/totalAmount" />
 
@@ -104,10 +107,33 @@
             android:id="@+id/txt_total_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:layout_weight="1"
             android:text="0" />
 
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/txt_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:textSize="15sp"
+        android:text="Current Balance: "
+        />
+    <TextView
+        android:id="@+id/current_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:textSize="15sp"
+        android:text="0"
+        />
     </LinearLayout>
 
     <!--recycler view for displaying our courses-->

@@ -24,7 +24,7 @@
     <string name="amount">Qiymati</string>
     <string name="name">Dasturchi</string>
     <string name="address">Manzil</string>
-    <string name="cheongju_city_s_korea">Janubiy Koreya, Chongju shahri</string>
+    <string name="city">Janubiy Koreya, Seul shahri</string>
     <string name="JAN">Yanvar</string>
     <string name="FEB">Fevral</string>
     <string name="MAR">Mart</string>
@@ -40,4 +40,5 @@
     <string name="startDateBeforeEndDate">Boshlang`ich sana tugash sanadan oldin yoki bir xil bo`lishi kerak...</string>
     <string name="selectStartDate">Boshlang`ich sana</string>
     <string name="selectEndDate">Tugash sana</string>
+    <string name="action_recalculate_Balance">Recalculate Balance</string>
 </resources>

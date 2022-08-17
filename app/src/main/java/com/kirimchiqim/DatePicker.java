@@ -11,8 +11,9 @@ import java.util.Calendar;
 
 public class DatePicker {
     private DatePickerDialog datePickerDialog;
+    private android.widget.DatePicker datePicker;
     private Button dateButton;
-
+    private DatePickerDialog.OnDateSetListener dateSetListener;
     public String getDateStamp() {
         return dateStamp;
     }
@@ -23,22 +24,17 @@ public class DatePicker {
 
     private String dateStamp = "";
 
-    /*public String getBtnText() {
-        return btnText;
-    }
-
-    public void setBtnText(String btnText) {
-        this.btnText = btnText;
-    }
-*/
     private String btnText;
     Context context;
+    public DatePicker(Context myContext){
+        context = myContext;
+    }
 
     public DatePicker(Context myContext, Button dateBtn) {
         context = myContext;
         initDatePicker();
         dateButton = dateBtn; //  findViewById(R.id.datePickerButton);
-        dateButton.setText(context.getResources().getString(R.string.enter_date_and_time));
+        //dateButton.setText(context.getResources().getString(R.string.enter_date_and_time));
         //setDateStamp("");
 
     }
@@ -53,26 +49,23 @@ public class DatePicker {
     }
 
     private void initDatePicker() {
-        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+        dateSetListener = new DatePickerDialog.OnDateSetListener() {
             @SuppressLint("DefaultLocale")
             @Override
             public void onDateSet(android.widget.DatePicker datePicker, int year, int month, int day) {
                 month = month + 1;
                 String date = makeDateString(day, month, year);
-                dateButton.setText(date);
+                //dateButton.setText(date);
                 setDateStamp(year + "-" + String.format("%02d", month)  + "-" + String.format("%02d", day));
                 System.out.println("\n\n\ninitDatePicker and setDateStamp: " + getDateStamp() + " " + year + "-" + month + "-" + day);
             }
         };
 
-        Calendar cal = Calendar.getInstance();
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        int day = cal.get(Calendar.DAY_OF_MONTH);
 
-        int style = AlertDialog.THEME_HOLO_LIGHT;
+
+
 //context
-        datePickerDialog = new DatePickerDialog(context, style, dateSetListener, year, month, day);
+        //datePickerDialog = new DatePickerDialog(context, style, dateSetListener, year, month, day);
         //datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
         //dateButton.setText(datePickerDialog.toString());
         //setBtnText(datePickerDialog.toString());
@@ -116,6 +109,13 @@ public class DatePicker {
     }
 
     public void openDatePicker(View view) {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                context,
+                dateSetListener,
+                Calendar.getInstance().get(Calendar.YEAR),
+                Calendar.getInstance().get(Calendar.MONTH),
+                Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+        );
         datePickerDialog.show();
     }
 

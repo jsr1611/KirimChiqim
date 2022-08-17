@@ -3,9 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/jimmy/StudioProjects/KirimChiqim/app/src/main/res/layout-v21/activity_add_new.xml" value="0.1" />
         <entry key="..\:/Users/jimmy/StudioProjects/KirimChiqim/app/src/main/res/layout/activity_about.xml" value="0.1" />
+        <entry key="..\:/Users/jimmy/StudioProjects/KirimChiqim/app/src/main/res/layout/activity_add_new.xml" value="0.1" />
+        <entry key="..\:/Users/jimmy/StudioProjects/KirimChiqim/app/src/main/res/layout/activity_datepicker.xml" value="0.146875" />
         <entry key="..\:/Users/jimmy/StudioProjects/KirimChiqim/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/jimmy/StudioProjects/KirimChiqim/app/src/main/res/layout/activity_view_items.xml" value="0.1" />
+        <entry key="..\:/Users/jimmy/StudioProjects/KirimChiqim/app/src/main/res/layout/content_main.xml" value="0.16614583333333333" />
+        <entry key="..\:/Users/jimmy/StudioProjects/KirimChiqim/app/src/main/res/layout/item_rv.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/jimmy/StudioProjects/KirimChiqim/app/src/main/res/layout/menu_main.xml" value="0.14739583333333334" />
+        <entry key="..\:/Users/jimmy/StudioProjects/KirimChiqim/app/src/main/res/menu/activity_add_new.xml" value="0.12291666666666666" />
+        <entry key="..\:/Users/jimmy/StudioProjects/KirimChiqim/app/src/main/res/menu/activity_view_items.xml" value="0.25" />
+        <entry key="..\:/Users/jimmy/StudioProjects/KirimChiqim/app/src/main/res/menu/menu_main.xml" value="0.14791666666666667" />
       </map>
     </option>
   </component>

@@ -24,7 +24,7 @@
     <string name="no_data_found">조회된 데이터 없음.</string>
     <string name="amount">금액</string>
     <string name="address">주소</string>
-    <string name="cheongju_city_s_korea">충청북도 청주시</string>
+    <string name="city">서울</string>
     <string name="JAN">01</string>
     <string name="FEB">02</string>
     <string name="MAR">03</string>
@@ -40,4 +40,5 @@
     <string name="selectStartDate">시작 날짜 선택</string>
     <string name="selectEndDate">종료 날짜 선택</string>
     <string name="startDateBeforeEndDate">시작날짜가 종료날짜보다 이전이거나 같아야 한다...</string>
+    <string name="action_recalculate_Balance">Recalculate Balance</string>
 </resources>
